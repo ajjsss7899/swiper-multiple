@@ -75,7 +75,6 @@ $(document).ready(function () {
 
 function slider(){
     $(".slider").each(function(index){
-    	var winWChk = ''; //디바이스 체크 변수
         var $this = $(this);
         var winW = window.innerWidth; //화면 가로사이즈
         var swiper = undefined;
@@ -85,15 +84,8 @@ function slider(){
         var slideInx = 0; //현재 슬라이드 index
         
         //디바이스 체크
-        if (window.innerWidth > 768){ //PC 버전
-            winWChk = 'pc';
-        }else{ //mobile 버전
-            winWChk = 'mo';
-        }
-
-        sliderAct(); //슬라이드 실행
-
-        $(window).on('resize', function (){
+        var winWChk = '';
+        $(window).on('load resize', function (){
             winW = window.innerWidth;
             if(winWChk != 'mo' && winW <= 768){ //모바일 버전으로 전환할 때
                 sliderAct();
